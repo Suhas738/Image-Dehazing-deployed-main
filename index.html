@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      /* Reset default margin and padding */
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Set background color and font for the entire page */
+      body {
+        background-color: #f2f2f2;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Style the heading */
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 36px;
+        color: #333;
+      }
+
+      /* Style the form */
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      /* Style the file input container */
+      .file-upload {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 20px;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: #fff;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Style the file input field */
+      .file-upload input[type="file"] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      /* Style the "Choose file" button */
+      .file-upload .file-select {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+      }
+
+      /* Style the "Choose file" button on hover */
+      .file-upload .file-select:hover {
+        background-color: #3e8e41;
+      }
+
+      /* Style the file name display */
+      .file-upload .file-name {
+        margin-left: 10px;
+        color: #999;
+        font-size: 14px;
+      }
+
+      /* Style the upload button */
+      button[type="submit"] {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+      }
+
+      /* Style the upload button on hover */
+      button[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+    </style>
+    <script>
+      function showFileName() {
+        var fileInput = document.getElementById("file-input");
+        var fileName = document.getElementById("file-name");
+        fileName.textContent = fileInput.files[0].name;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Image Dehazer</h1>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <div class="file-upload">
+        <label class="file-select">
+          <span>Choose file</span>
+          <input
+            id="file-input"
+            type="file"
+            name="image"
+            onchange="showFileName()"
+          />
+        </label>
+        <div id="file-name"></div>
+      </div>
+      <button type="submit">Upload</button>
+    </form>
+  </body>
+</html>
